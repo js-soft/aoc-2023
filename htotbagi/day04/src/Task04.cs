@@ -29,8 +29,6 @@
             return numbersArray;
         }
 
-
-
         public int CalculateNumberOfPoints(string input)
         {
             int[] winningNumbers = GetWinningNumbers(input);
@@ -84,6 +82,49 @@
             }
 
             return totalNumberOfPoints;
+        }
+
+        public int CalculateMatchingNumber(string input)
+        {
+            int[] winningNumbers = GetWinningNumbers(input);
+            int[] currentNumbers = GetCurrentNumbers(input);
+            int points = 0;
+
+            for (int i = 0; i < winningNumbers.Length; i++)
+            {
+                for (int j = 0; j < currentNumbers.Length; j++)
+                {
+                    if (winningNumbers[i] == currentNumbers[j])
+                    {
+                        points += 1;
+                    }
+                }
+            }
+
+            return points;
+        }
+
+        public List<int> AddCopiesOfScratchCard(List<string> scratchboards, List<int> initialCardCounter, int iteration)
+        {
+            int matchingNumber = CalculateMatchingNumber(scratchboards[iteration]);
+
+            for (int i = iteration + 1; i < matchingNumber + 1 + iteration; i++)
+            {
+                initialCardCounter[i] += 1 * initialCardCounter[iteration];
+            }
+
+            return initialCardCounter;
+        }
+
+        public int CountAllScratchBoards(List<string> scratchboards, int totalCardNumber, ref List<int> initialCardCounter)
+        {
+            for (int i = 0; i < totalCardNumber; i++)
+            {
+                initialCardCounter = AddCopiesOfScratchCard(scratchboards, initialCardCounter, i);
+            }
+
+            int sum = initialCardCounter.Sum();
+            return sum;
         }
     }
 }
