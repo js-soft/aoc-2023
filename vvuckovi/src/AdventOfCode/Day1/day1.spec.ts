@@ -1,7 +1,7 @@
 import { calculateCalibrationValues, sumCalibrationValues } from './day1';
 
 describe('Day 1 TDD begginer', () => {
-  it('parseLinesIntoTwoDigitPair', () => {
+  it('testParseLinesIntoTwoDigitPair', () => {
     // Arrange
     const inputLines = ['1abc2', 'pqr3stu8vwx', 'a1b2c3d4e5f', 'treb7uchet'];
     const expectedValues = [12, 38, 15, 77];
@@ -13,7 +13,7 @@ describe('Day 1 TDD begginer', () => {
     expect(result).toEqual(expectedValues);
   });
 
-  it('calculateSumOfValues', () => {
+  it('testCalculateSumOfValues', () => {
     // Arrange
     const calibrationValues = [12, 38, 15, 77];
     const expectedSum = 142;
@@ -25,7 +25,7 @@ describe('Day 1 TDD begginer', () => {
     expect(result).toEqual(expectedSum);
   });
 
-  it('calculateSumOfParsedLines', () => {
+  it('testCalculateSumOfParsedLines', () => {
     // Arrange
     const inputLines = ['1abc2', 'pqr3stu8vwx', 'a1b2c3d4e5f', 'treb7uchet'];
     const expectedSum = 142;
