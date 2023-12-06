@@ -1,9 +1,8 @@
+/* eslint-disable prettier/prettier */
 export function calculateCalibrationValues(lines: string[]): number[] {
   return lines.map((line) => {
     const firstDigitMatch = line.match(/\d/); // Find the first digit in the line
     const lastDigitMatch = line.match(/\d(?=\D*$)/); // Find the last digit in the line
-
-    console.log(firstDigitMatch, lastDigitMatch);
     
     if (firstDigitMatch && lastDigitMatch) {
       const firstDigit = parseInt(firstDigitMatch[0], 10);
