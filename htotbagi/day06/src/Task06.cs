@@ -2,23 +2,23 @@
 {
     public class Race
     {
-        public List<int> GetTimes(string filePath)
+        public List<ulong> GetTimes(string filePath)
         {
             string startsWith = "Time:";
-            List<int> timeValues = ExtractTimeValues(filePath, startsWith);
+            List<ulong> timeValues = ExtractTimeValues(filePath, startsWith);
             return timeValues;
         }
 
-        public List<int> GetDistances(string filePath)
+        public List<ulong> GetDistances(string filePath)
         {
             string startsWith = "Distance:";
-            List<int> timeValues = ExtractTimeValues(filePath, startsWith);
+            List<ulong> timeValues = ExtractTimeValues(filePath, startsWith);
             return timeValues;
         }
 
-        public List<int> ExtractTimeValues(string filePath, string startsWith)
+        public List<ulong> ExtractTimeValues(string filePath, string startsWith)
         {
-            List<int> timeValues = new List<int>();
+            List<ulong> timeValues = new List<ulong>();
 
             string[] lines = File.ReadAllLines(filePath);
 
@@ -30,7 +30,7 @@
 
                 for (int i = 1; i < words.Length; i++)
                 {
-                    if (int.TryParse(words[i], out int timeValue))
+                    if (ulong.TryParse(words[i], out ulong timeValue))
                     {
                         timeValues.Add(timeValue);
                     }
@@ -41,18 +41,18 @@
             return timeValues;
         }
 
-        public int CalculateDifferentWaysForSpecificRace(string filePath, int raceNumber)
+        public ulong CalculateDifferentWaysForSpecificRace(string filePath, int raceNumber)
         {
-            List<int> times = GetTimes(filePath);
-            List<int> distances = GetDistances(filePath);
+            List<ulong> times = GetTimes(filePath);
+            List<ulong> distances = GetDistances(filePath);
 
-            List<int> result = new List<int>();
+            List<ulong> result = new List<ulong>();
 
-            int firstTime = times[raceNumber];
-            int counter = times[raceNumber];
-            int firstDistance = distances[raceNumber];
+            ulong firstTime = times[raceNumber];
+            ulong counter = times[raceNumber];
+            ulong firstDistance = distances[raceNumber];
 
-            for (int i = 0; i < firstTime; i++)
+            for (ulong i = 0; i < firstTime; i++)
             {
                 if (i * counter > firstDistance)
                 {
@@ -61,18 +61,18 @@
                 counter -= 1;
             }
 
-            return result.Count();
+            return (ulong)result.Count();
         }
 
-        public int GetMarginError(string filePath)
+        public ulong GetMarginError(string filePath)
         {
-            List<int> times = GetTimes(filePath);
+            List<ulong> times = GetTimes(filePath);
 
-            int result = 1;
+            ulong result = 1;
 
-            for (int i = 0; i < times.Count; i++)
+            for (ulong i = 0; i < (ulong)times.Count; i++)
             {
-                result *= CalculateDifferentWaysForSpecificRace(filePath, i);
+                result *= CalculateDifferentWaysForSpecificRace(filePath, (int)i);
             }
 
             return result;
