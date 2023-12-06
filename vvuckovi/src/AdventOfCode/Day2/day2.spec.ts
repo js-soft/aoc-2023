@@ -1,4 +1,4 @@
-import { getGameIds } from './da2';
+import { getGameIds, getPossibleGames } from './da2';
 
 /* eslint-disable prettier/prettier */
 describe('Day 2 TDD begginner', () => {
