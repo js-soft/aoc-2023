@@ -2,9 +2,36 @@
 {
     public class Bag
     {
-        public int GetGameId(string game)
+        public int GetGameId(string input)
         {
-            return int.Parse(game[5].ToString());
+            Match match = Regex.Match(input, @"\d+");
+
+            if (match.Success)
+            {
+                if (int.TryParse(match.Value, out int result))
+                {
+                    return result;
+                }
+            }
+
+            return -1;
+        }
+
+        public List<string> ReadFileToList(string filePath)
+        {
+            List<string> linesList = new List<string>();
+
+            try
+            {
+                string[] lines = File.ReadAllLines(filePath);
+                linesList.AddRange(lines);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+
+            return linesList;
         }
 
         public string GetCubesString(string input)
@@ -117,6 +144,68 @@
             }
 
             return GetGameId(input);
+        }
+
+        public List<int> GetMaximumValuePerColor(string input)
+        {
+            List<int> result = new List<int>();
+
+            int red = 0;
+            int green = 0;
+            int blue = 0;
+
+            List<string> stringSegments = GetCubesStringSegments(input);
+
+            for (int i = 0; i < stringSegments.Count; i++)
+            {
+                Dictionary<string, int> storage = CreateDictionaryOutOfSegment(input, i);
+
+                if (storage["red"] > red)
+                {
+                    red = storage["red"];
+                }
+                if (storage["green"] > green)
+                {
+                    green = storage["green"];
+                }
+                if (storage["blue"] > blue)
+                {
+                    blue = storage["blue"];
+                }
+            }
+
+            result.Add(red);
+            result.Add(green);
+            result.Add(blue);
+
+            return result;
+        }
+
+        public int CalculatePowerOfCubes(string input)
+        {
+            List<int> maximumColors = GetMaximumValuePerColor(input);
+            int result = 1;
+
+            for (int i = 0; i < maximumColors.Count; i++)
+            {
+                result *= maximumColors[i];
+            }
+
+            return result;
+        }
+
+        public int CalculateSumOfCubePowers(string filePath)
+        {
+            List<string> games = ReadFileToList(filePath);
+
+            int result = 0;
+
+            foreach (string lines in games)
+            {
+                result += CalculatePowerOfCubes(lines);
+            }
+
+            return result;
         }
     }
 }

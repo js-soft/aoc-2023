@@ -1,8 +1,4 @@
-﻿using Day02Src;
-using FluentAssertions;
-using Xunit;
-
-namespace Day02Tests
+﻿namespace Day02Tests
 {
     public class Task02Tests
     {
@@ -17,13 +13,13 @@ namespace Day02Tests
         {
             { "red", 12 },
             { "green", 13 },
-            { "blue", 15 }
+            { "blue", 14 }
         };
 
         [Theory]
         [InlineData("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green", 1)]
-        [InlineData("Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue", 2)]
-        [InlineData("Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green", 5)]
+        [InlineData("Game 24: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue", 24)]
+        [InlineData("Game 134: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green", 134)]
         public void Should_return_game_id(string input, int expected)
         {
             // Act
@@ -128,6 +124,50 @@ namespace Day02Tests
         {
             // Act
             int result = newBag.IsGamePossible(input, loadedBag);
+
+            // Assert
+            result.Should().Be(expected);
+        }
+
+        [Theory]
+        [InlineData("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green", new int[] { 4, 2, 6 })]
+        [InlineData("Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue", new int[] { 1, 3, 4 })]
+        [InlineData("Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red", new int[] { 20, 13, 6 })]
+        [InlineData("Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red", new int[] { 14, 3, 15 })]
+        [InlineData("Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green", new int[] { 6, 3, 2 })]
+        public void Should_return_maximum_value_per_color(string input, int[] expected)
+        {
+            // Act
+            List<int> result = newBag.GetMaximumValuePerColor(input);
+
+            // Assert
+            result.Should().Equal(expected);
+        }
+
+        [Theory]
+        [InlineData("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green", 48)]
+        [InlineData("Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue", 12)]
+        [InlineData("Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red", 1560)]
+        [InlineData("Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red", 630)]
+        [InlineData("Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green", 36)]
+        public void Should_return_power_of_the_cube(string input, int expected)
+        {
+            // Act
+            int result = newBag.CalculatePowerOfCubes(input);
+
+            // Assert
+            result.Should().Be(expected);
+        }
+
+        [Fact]
+        public void Should_return_power_of_the_cube_added_up()
+        {
+            // Arrange
+            string filePath = "C:\\Users\\htotbagi\\OneDrive - j&s-soft GmbH\\Dokumente\\C#-10-fundamentals\\advent-of-code\\src\\data\\game.txt";
+            int expected = 66016;
+
+            // Act
+            int result = newBag.CalculateSumOfCubePowers(filePath);
 
             // Assert
             result.Should().Be(expected);
