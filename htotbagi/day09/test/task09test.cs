@@ -165,6 +165,51 @@ namespace test.day9
         }
 
         [Fact]
+        public void Should_ReveerseHistory_step0()
+        {
+            // Arrange
+            var firstRow = newSensor.newExtractor(filePath1)[0];
+            List<List<int>> input = newSensor.GetAllDifferencesForThatRow(firstRow);
+            int expected = -3;
+
+            // Act
+            int result = newSensor.ReverseHistory(input);
+
+            // Assert
+            result.Should().Be(expected);
+        }
+
+        [Fact]
+        public void Should_ReveerseHistory_step1()
+        {
+            // Arrange
+            var firstRow = newSensor.newExtractor(filePath1)[1];
+            List<List<int>> input = newSensor.GetAllDifferencesForThatRow(firstRow);
+            int expected = 0;
+
+            // Act
+            int result = newSensor.ReverseHistory(input);
+
+            // Assert
+            result.Should().Be(expected);
+        }
+
+        [Fact]
+        public void Should_ReveerseHistory_step2()
+        {
+            // Arrange
+            var firstRow = newSensor.newExtractor(filePath1)[2];
+            List<List<int>> input = newSensor.GetAllDifferencesForThatRow(firstRow);
+            int expected = 5;
+
+            // Act
+            int result = newSensor.ReverseHistory(input);
+
+            // Assert
+            result.Should().Be(expected);
+        }
+
+        [Fact]
         public void Should_return_sum_of_extrapolated_values_for_example_data()
         {
             // Arrange
@@ -185,6 +230,19 @@ namespace test.day9
 
             // Act
             int result = newSensor.CalcFinal(filePath2);
+
+            // Assert
+            result.Should().Be(expected);
+        }
+
+        [Fact]
+        public void Should_return_sum_of_extrapolated_values_for_real_data_back()
+        {
+            // Arrange
+            int expected = 889;
+
+            // Act
+            int result = newSensor.CalcFinalBackwards(filePath2);
 
             // Assert
             result.Should().Be(expected);

@@ -38,6 +38,19 @@
             return input[0][^1];
         }
 
+        public int ReverseHistory(List<List<int>> input)
+        {
+            input[^1].Add(0);
+
+            for (int i = input.Count - 1; i >= 1; i--)
+            {
+                int lastElement = input[i].Last();
+                input[i - 1].Add(input[i - 1].First() - lastElement);
+            }
+
+            return input[0][^1];
+        }
+
 
         public int CalcFinal(string filePath)
         {
@@ -48,6 +61,20 @@
             foreach (List<int> row in data)
             {
                 result += AddStepsToAsALastElement(GetAllDifferencesForThatRow(row));
+            }
+
+            return result;
+        }
+
+        public int CalcFinalBackwards(string filePath)
+        {
+            List<List<int>> data = newExtractor(filePath);
+
+            int result = 0;
+
+            foreach (List<int> row in data)
+            {
+                result += ReverseHistory(GetAllDifferencesForThatRow(row));
             }
 
             return result;
