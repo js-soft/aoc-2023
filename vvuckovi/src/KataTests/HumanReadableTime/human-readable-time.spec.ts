@@ -20,4 +20,14 @@ describe("Kata Test Human Readable Time", () => {
         // Assert
         expect(readableTimeResult).toEqual("00:00:00");
     })
+
+    it('Should_Return_Seconds', () => {
+        // Arrange
+
+        // Act
+        const readableTimeResult = GetHumanReadableTime(5);
+
+        // Assert
+        expect(readableTimeResult).toEqual("00:00:05");
+    });
 })
