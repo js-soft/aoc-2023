@@ -31,7 +31,7 @@ describe("Kata Test Human Readable Time", () => {
         expect(readableTimeResult).toEqual("00:00:05");
     });
 
-    it('Should_Return_Hours', () => {
+    it('Should_Return_Minutes', () => {
          // Arrange
 
         // Act
@@ -41,5 +41,13 @@ describe("Kata Test Human Readable Time", () => {
         expect(readableTimeResult).toEqual("00:01:00");
     });
 
+    it('test', () => {
+        // Arrange
 
+       // Act
+       const readableTimeResult = GetHumanReadableTime(86399);
+
+       // Assert
+       expect(readableTimeResult).toEqual("23:59:59");
+   });
 })
