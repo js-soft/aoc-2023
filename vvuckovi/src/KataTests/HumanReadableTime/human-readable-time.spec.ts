@@ -11,7 +11,7 @@
 import { GetHumanReadableTime } from './human-readable-time';
 
 describe("Kata Test Human Readable Time", () => {
-    it('test', () => {
+    it('Should_BeEqual_ToZeroTime', () => {
         // Arrange
 
         // Act
