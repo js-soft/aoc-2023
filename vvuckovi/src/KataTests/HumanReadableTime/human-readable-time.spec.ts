@@ -41,7 +41,7 @@ describe("Kata Test Human Readable Time", () => {
         expect(readableTimeResult).toEqual("00:01:00");
     });
 
-    it('test', () => {
+    it('Should_Return_Hours', () => {
         // Arrange
 
        // Act
