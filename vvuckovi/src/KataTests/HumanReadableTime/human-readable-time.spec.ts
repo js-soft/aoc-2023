@@ -63,10 +63,10 @@ describe("Kata Test Human Readable Time", () => {
 
     it.each(
         [
-            [369999, "00:00:00"],
+            [369_999, "00:00:00"],
             [-31, "00:00:00"]
         ]
-    )('test', (time: number, expectedResult: string) => {
+    )('Should_Return_TimeZeroIfConditionsAreNotMet', (time: number, expectedResult: string) => {
         // Arrange
 
         // Act
