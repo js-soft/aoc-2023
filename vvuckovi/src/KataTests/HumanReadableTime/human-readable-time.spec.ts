@@ -51,7 +51,7 @@ describe("Kata Test Human Readable Time", () => {
        expect(readableTimeResult).toEqual("23:59:59");
    });
 
-   it('test', () => {
+   it('Should_Test_MaximumTimeInput', () => {
         // Arrange
 
         // Act

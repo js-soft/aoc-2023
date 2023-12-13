@@ -10,8 +10,5 @@ export function GetHumanReadableTime(time: number) : string {
 }
 
 function getDoubleDigits(time: number) : string{
-    if(time < 10)
-        return "0" + time;
-
-    return "" + time;
+    return time < 10 ? "0" + time : "" + time;
 }
