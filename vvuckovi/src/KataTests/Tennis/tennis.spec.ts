@@ -27,6 +27,19 @@ describe('Kata TDD Tennis: Score', () => {
         // Assert
         expect(result).toEqual('love');
     })
+
+    
+
+    it('Should_Return_Fifteen', () => {
+        // Arrange
+        const score = new Score();
+
+        // Act
+        const result = score.ConvertPlayerPoints(1);
+
+        // Assert
+        expect(result).toEqual('15');
+    })
 })
 
 describe('Kata TDD Tennis: Game', () => {
