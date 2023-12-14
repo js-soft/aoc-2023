@@ -32,4 +32,17 @@ describe('Kata TDD Bowling Game', () => {
         // Assert
         expect(game.score()).toEqual(20);
     });
+
+    it('Should_Return_OneSpare', () => {
+        // Arrange
+        game.roll(5);
+        game.roll(5);
+        game.roll(3);
+        
+        // Act
+        rollMany(17,0);
+
+        //Assert
+        expect(game.score()).toEqual(16);
+    });
 });
