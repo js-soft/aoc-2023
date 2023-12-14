@@ -77,9 +77,9 @@ public class Map
     /// Brute-Force, will take long
     /// </summary>
     /// <returns></returns>
-    public ulong CalculateSimultaneousSteps()
+    public long CalculateSimultaneousSteps()
     {
-        ulong steps = 0;
+        long steps = 0;
         int dirIndex = 0;
         List<short> ids = validNodes
             .Where(n => n.IdLastDigit == IdA)
