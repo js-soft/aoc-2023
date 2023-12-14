@@ -6,11 +6,11 @@ export class Player {
         this.playerScore = 0;
     }
 
-    public getPlayerScore() : number {
+    public getPlayerPoints() : number {
         return this.playerScore;
     }
 
-    public incrementPlayerScore() : void {
+    public incrementPlayerPoints() : void {
         this.playerScore++;
     }
 }
