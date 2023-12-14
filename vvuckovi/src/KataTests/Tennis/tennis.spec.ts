@@ -80,13 +80,20 @@ describe('Kata TDD Tennis: Game', () => {
     it('Should_ScorePointsDeuce_WhenPlayersHave40', () => {
         // Arrange
         const game = new Game();
-        const playerOne = new Player();
-        const playerTwo = new Player();
+        const player1 = new Player();
+        const player2 = new Player();
 
         // Act
-        playerOne.incrementPlayerPoints();
+        PlayerScore(player1, 3);
+        PlayerScore(player2, 3);
 
         // Assert
-        expect(game.PlayGameOfTennis(playerOne,playerTwo)).toEqual('15-love');
+        expect(game.PlayGameOfTennis(player1,player2)).toEqual('deuce');
     });
+
+    function PlayerScore(player: Player, score: number) {
+        for(let i = 0; i < score; i++){
+            player.incrementPlayerPoints();
+        }
+    }
 }) 
