@@ -3,16 +3,33 @@
 import { Game } from './bowling-game'
 
 describe('Kata TDD Bowling Game', () => {
-    it('test', () => {
+
+    const game = new Game();
+
+    
+    function rollMany(n: number, pins: number) : void {
+        for(let i = 0; i < n; i++){
+            game.roll(pins);
+        }
+    }
+
+    it('Should_Return_GutterGame', () => {
         // Arrange
-        const game = new Game();
 
         // Act
-        for(let i = 0; i < 20; i++){
-            game.roll(0);
-        }
+        rollMany(20, 0);
 
         // Assert
         expect(game.score()).toEqual(0);
+    });
+
+    it('Should_Return_AllOnes', () => {
+        // Arrange
+
+        // Act
+        rollMany(20, 1);
+
+        // Assert
+        expect(game.score()).toEqual(20);
     });
 });
