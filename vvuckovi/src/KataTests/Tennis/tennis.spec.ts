@@ -3,7 +3,7 @@
 import { Player } from './player';
 import { Score } from './score';
 
-describe('Kata TDD Tennis Game: Player', () => {
+describe('Kata TDD Tennis: Player', () => {
     it('Should_Return_IncrementedPlayerScore', () => {
         // Arrange
         const player = new Player();
@@ -15,3 +15,26 @@ describe('Kata TDD Tennis Game: Player', () => {
         expect(player.getPlayerPoints()).toEqual(1);
     })
 });
+
+describe('Kata TDD Tennis: Score', () => {
+    it('test', () => {
+        // Arrange
+        const score = new Score();
+
+        // Act
+        const result = score.ConvertPlayerPoints(0);
+
+        // Assert
+        expect(result).toEqual('love');
+    })
+})
+
+describe('Kata TDD Tennis: Game', () => {
+    it('test', () => {
+        // Arrange
+
+        // Act
+
+        // Assert
+    });
+}) 
