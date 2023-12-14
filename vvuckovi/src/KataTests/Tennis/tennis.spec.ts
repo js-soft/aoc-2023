@@ -2,6 +2,7 @@
 /* eslint-disable prettier/prettier */
 import { Player } from './player';
 import { Converters } from './converters';
+import { Game } from './game';
 
 describe('Kata TDD Tennis: Player', () => {
     it('Should_Return_IncrementedPlayerScore', () => {
@@ -63,11 +64,16 @@ describe('Kata TDD Tennis: Score', () => {
 })
 
 describe('Kata TDD Tennis: Game', () => {
-    it('test', () => {
+    it('Should_Return_FifteenLove', () => {
         // Arrange
+        const game = new Game();
+        const playerOne = new Player();
+        const playerTwo = new Player();
 
         // Act
+        playerOne.incrementPlayerPoints();
 
         // Assert
+        expect(game.PlayGameOfTennis(playerOne,playerTwo)).toEqual('15-love');
     });
 }) 
