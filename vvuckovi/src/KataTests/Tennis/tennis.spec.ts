@@ -41,7 +41,17 @@ describe('Kata TDD Tennis: Score', () => {
         expect(result).toEqual('15');
     })
 
-    
+    it('Should_Return_Thirty', () => {
+        // Arrange
+        const score = new Score();
+
+        // Act
+        const result = score.ConvertPlayerPoints(2);
+
+        // Assert
+        expect(result).toEqual('30');
+    })
+
 })
 
 describe('Kata TDD Tennis: Game', () => {
