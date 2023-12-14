@@ -17,7 +17,7 @@ describe('Kata TDD Tennis: Player', () => {
 });
 
 describe('Kata TDD Tennis: Score', () => {
-    it('test', () => {
+    it('Should_Return_Love', () => {
         // Arrange
         const score = new Score();
 
