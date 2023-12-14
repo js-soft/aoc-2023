@@ -64,7 +64,20 @@ describe('Kata TDD Tennis: Score', () => {
 })
 
 describe('Kata TDD Tennis: Game', () => {
-    it('Should_Return_FifteenLove', () => {
+    it('Should_ScorePoint_ForPlayer1', () => {
+        // Arrange
+        const game = new Game();
+        const player1 = new Player();
+        const player2 = new Player();
+
+        // Act
+        player1.incrementPlayerPoints();
+
+        // Assert
+        expect(game.PlayGameOfTennis(player1,player2)).toEqual('15-love');
+    });
+
+    it('Should_ScorePointsDeuce_WhenPlayersHave40', () => {
         // Arrange
         const game = new Game();
         const playerOne = new Player();
