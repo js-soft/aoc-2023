@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable prettier/prettier */
 import { Player } from './player';
-import { Score } from './score';
+import { Converters } from './converters';
 
 describe('Kata TDD Tennis: Player', () => {
     it('Should_Return_IncrementedPlayerScore', () => {
@@ -19,7 +19,7 @@ describe('Kata TDD Tennis: Player', () => {
 describe('Kata TDD Tennis: Score', () => {
     it('Should_Return_Love', () => {
         // Arrange
-        const score = new Score();
+        const score = new Converters();
 
         // Act
         const result = score.ConvertPlayerPoints(0);
@@ -28,11 +28,9 @@ describe('Kata TDD Tennis: Score', () => {
         expect(result).toEqual('love');
     })
 
-    
-
     it('Should_Return_Fifteen', () => {
         // Arrange
-        const score = new Score();
+        const score = new Converters();
 
         // Act
         const result = score.ConvertPlayerPoints(1);
@@ -43,7 +41,7 @@ describe('Kata TDD Tennis: Score', () => {
 
     it('Should_Return_Thirty', () => {
         // Arrange
-        const score = new Score();
+        const score = new Converters();
 
         // Act
         const result = score.ConvertPlayerPoints(2);
@@ -52,6 +50,16 @@ describe('Kata TDD Tennis: Score', () => {
         expect(result).toEqual('30');
     })
 
+    it('Should_Return_Forty', () => {
+        // Arrange
+        const score = new Converters();
+
+        // Act
+        const result = score.ConvertPlayerPoints(3);
+
+        // Assert
+        expect(result).toEqual('40');
+    })
 })
 
 describe('Kata TDD Tennis: Game', () => {
