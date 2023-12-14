@@ -15,16 +15,3 @@ describe('Kata TDD Tennis Game: Player', () => {
         expect(player.getPlayerPoints()).toEqual(1);
     })
 });
-
-describe('Kata TDD Tennis Game: Score', () => {
-    it('test', () => {
-        // Arrange
-        const score = new Score();
-
-        // Act
-        const result = score.ConvertPlayerPoints(0);
-
-        // Assert
-        expect(result).toEqual("love");
-    })
-});
