@@ -1,6 +1,18 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable prettier/prettier */
-export class Converters {
+import { Player } from "./player";
+
+export class ScoreCalculator {
+
+    PlayGameOfTennis(player1: Player, player2: Player) : string {
+        
+        if(player1.getPlayerPoints() === player2.getPlayerPoints() && player1.getPlayerPoints() >= 3) {
+            return "deuce";
+        }
+
+        return this.ConvertPlayerPoints(player1.getPlayerPoints()) + "-" + this.ConvertPlayerPoints(player2.getPlayerPoints());
+    }
+
     ConvertPlayerPoints(point: number) : string {
         let convertedPoint = "";
 
